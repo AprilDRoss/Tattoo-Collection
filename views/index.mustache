@@ -13,7 +13,7 @@
     <br>
 
     <label for="finished">Is it Finished:</label><br>
-    <select class="finished" id="finished">
+    <select class="finished" name="finished" id="finished">
       <option value="true">Yes</option>
       <option value="false">No</option>
     </select><br>
@@ -50,7 +50,7 @@
 
 <div class="output">
         {{#allTattoos}}
-        <p>Tattoo Name: {{tattooname}}</p>
+        <p>Tattoo Name: {{name}}</p>
         <p>Is the tattoo finished:{{finished}}</p>
         <p>Number of Tattoo sessions:{{sessionsTime}}</p>
         <p>Tattoo Theme:{{theme}}</p>

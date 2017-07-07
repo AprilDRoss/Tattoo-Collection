@@ -33,7 +33,7 @@ router.get("/", function(req, res){
 router.post("/", function(req, res){
   //like creating a row in a table
   let inked  = new Piece({
-    name:req.body.tattooname,
+    name: req.body.tattooname,
     finished:req.body.finished,
     sessionTime:req.body.sessionTime,
     theme:req.body.tattootheme,
