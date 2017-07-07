@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Enter Tattoo Details</title>
+  </head>
+  <body>
+  <p class="tattoos">Tattoo Details</p>
+<div class="post">
+  <form action="/" method ="post">
+    <label for="tattooname">Tattoo Name:</label><br>
+    <input type="text" name="tattooname" value="" placeholder=" "><br>
+    <br>
+
+    <label for="finished">Is it Finished:</label><br>
+    <select class="finished" id="finished">
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select><br>
+    <br>
+
+    <label for="sessionTime">SessionTime (hrs):</label><br>
+    <input type="text" name="sessionTime" value="" placeholder=" "><br>
+    <br>
+
+    <label for="tattootheme">Tattoo Theme (i.e: traditional, black and grey, custom):</label><br>
+    <input type="text" name="tattootheme" value="" placeholder=" "><br>
+    <br>
+
+    <p class="tattooelements">Tattoo Elements: (flower, animals etc.):</p><br>
+    <label for="primarycolor">Primary Color:</label><br>
+    <input type="text" name="primarycolor" value="" placeholder=" "><br>
+
+    <label for="addedeffects">Added Effects:</label><br>
+    <input type="text" name="addedeffects" value="" placeholder=" "><br>
+
+    <label for="text">Text:</label><br>
+    <input type="text" name="text" value="" placeholder=" "><br>
+    <br>
+
+    <label for="sessionsRemaining">Tattoo sessions remaining:</label><br>
+    <input class="sessionsRemaining" type="text" name="sessionsRemaining" value="" placeholder=" "><br>
+    <br>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<h2>Tattoo Collection</h2>
+
+<div class="output">
+        {{#allTattoos}}
+        <p>Tattoo Name: {{tattooname}}</p>
+        <p>Is the tattoo finished:{{finished}}</p>
+        <p>Number of Tattoo sessions:{{sessionsTime}}</p>
+        <p>Tattoo Theme:{{theme}}</p>
+        <p>Tattoo Elements:</p>
+        {{#elements}}
+        <p>PrimaryColor:{{primarycolor}}</p>
+        <p>Added Effects:{{addedeffects}}</p>
+        <p>Text:{{text}}</p>
+        {{/elements}}
+        <p>Sessions Remaining:{{sessionsRemaining}}
+        {{/allTattoos}}
+      </div>
+  </body>
+</html>
