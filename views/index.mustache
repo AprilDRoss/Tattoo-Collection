@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Enter Tattoo Details</title>
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
   <p class="tattoos">Tattoo Details</p>
@@ -11,18 +12,6 @@
     <label for="tattooname">Tattoo Name:</label><br>
     <input type="text" name="tattooname" value="" placeholder=" "><br>
     <br>
-
-    <label for="finished">Is it Finished:</label><br>
-    <select class="finished" name="finished" id="finished">
-      <option value="true">Yes</option>
-      <option value="false">No</option>
-    </select><br>
-    <br>
-
-    <label for="sessionTime">SessionTime (hrs):</label><br>
-    <input type="text" name="sessionTime" value="" placeholder=" "><br>
-    <br>
-
     <label for="tattootheme">Tattoo Theme (i.e: traditional, black and grey, custom):</label><br>
     <input type="text" name="tattootheme" value="" placeholder=" "><br>
     <br>
@@ -37,31 +26,27 @@
     <label for="text">Text:</label><br>
     <input type="text" name="text" value="" placeholder=" "><br>
     <br>
-
-    <label for="sessionsRemaining">Tattoo sessions remaining:</label><br>
-    <input class="sessionsRemaining" type="text" name="sessionsRemaining" value="" placeholder=" "><br>
-    <br>
-
     <button type="submit">Submit</button>
   </form>
 </div>
 
 <h2>Tattoo Collection</h2>
 
+<div class=container>
 <div class="output">
         {{#allTattoos}}
-        <p>Tattoo Name: {{name}}</p>
-        <p>Is the tattoo finished:{{finished}}</p>
-        <p>Number of Tattoo sessions:{{sessionsTime}}</p>
-        <p>Tattoo Theme:{{theme}}</p>
-        <p>Tattoo Elements:</p>
+        <p class="tattname">Tattoo Name: {{name}}</p>
+        <p class="tatt-theme">Tattoo Theme:{{theme}}</p>
+        <p class="tatt-elements">Tattoo Elements:</p>
         {{#elements}}
-        <p>PrimaryColor:{{primarycolor}}</p>
-        <p>Added Effects:{{addedeffects}}</p>
-        <p>Text:{{text}}</p>
+        <ul>
+          <li class="primarycolor">PrimaryColor:{{primarycolor}}</li>
+          <li class="addedeffects">Added Effects:{{addedeffects}}</li>
+          <li class="text">Text:{{text}}</li>
+        </ul>
         {{/elements}}
-        <p>Sessions Remaining:{{sessionsRemaining}}
         {{/allTattoos}}
       </div>
+    </div>
   </body>
 </html>

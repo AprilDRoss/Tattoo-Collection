@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit the Tattoo</title>
+  </head>
+  <body>
+    <h1>Edit the Tattoo</h1>
+    {{#oneTattoo}}
+    <form action="/edit/{{name}}" method="post">
+      <label for="tattooname">Tattoo Name:</label><br>
+      <input type="text" name="tattooname" value="{{name}}" placeholder="Enter Tattoo Name"><br>
+      <br>
+      <label for="tattootheme">Tattoo Theme (i.e: traditional, black and grey, custom):</label><br>
+      <input type="text" name="tattootheme" value="{{theme}}" placeholder="Enter the tattoo theme "><br>
+      <br>
+      {{#elements}}
+
+      <p class="tattooelements">Tattoo Elements: (flower, animals etc.):</p><br>
+      <label for="primarycolor">Primary Color:</label><br>
+      <input type="text" name="primarycolor" value="{{primarycolor}}" placeholder="Enter the primarycolor "><br>
+
+      <label for="addedeffects">Added Effects:</label><br>
+      <input type="text" name="addedeffects" value="{{addedeffects}}" placeholder="Enter the addeded effects "><br>
+
+      <label for="text">Text:</label><br>
+      <input type="text" name="text" value="{{text}}" placeholder="Enter the tattoo text"><br>
+      <br>
+      {{/elements}}
+      <button type="submit" name="edit" value="{{name}}">Update Tattoo</button>
+      {{/oneTattoo}}
+    </form>
+
+  </body>
+</html>

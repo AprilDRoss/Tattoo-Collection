@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const mongo = require('mongo');
 const mongoose = require("mongoose");
 //create mongoose schema
 const Schema = mongoose.Schema;
@@ -10,19 +11,16 @@ mongoose.connect("mongodb://localhost:27017/tattoos");
 //creating Schema
 const tattooCollection = new Schema({
   name: { type: String, required: true, unique: true },
-  finished: Boolean,
-  sessionsTime: Number,
   theme: {type: String, required:true},
   elements: [{
-	           primarycolor:[String],
-	           addedeffects:[String],
-	           text:[String],
-             }],
-  sessionsRemaining: Number
+	           primarycolor:String,
+	           addedeffects:String,
+	           text:String,
+             }]
 });
 
-//create a model by using a mongoose method
-const Piece = mongoose.model("Tattoos", tattooCollection);
+//create a model instance by using a mongoose method
+const Piece = mongoose.model("Ink", tattooCollection);
 
 router.get("/", function(req, res){
   Piece.find({}).then(function(allTattoos){
@@ -34,11 +32,8 @@ router.post("/", function(req, res){
   //like creating a row in a table
   let inked  = new Piece({
     name: req.body.tattooname,
-    finished:req.body.finished,
-    sessionTime:req.body.sessionTime,
     theme:req.body.tattootheme,
     elements:req.body.tattooelements,
-    sessionsRemaining:req.body.sessionsRemaining
   });
   inked.elements.push({primarycolor: req.body.primarycolor, addedeffects:req.body.addedeffects, text:req.body.text});
     inked.save().then(function(newInk){
@@ -49,5 +44,30 @@ router.post("/", function(req, res){
   // });
 
 });
+//*******need to fix the edit***********
+router.get("/edit/:name", function(req, res){
+  Piece.findOne({name:req.params.name}).then(function(oneTattoo){
+    res.render("edit",{oneTattoo:oneTattoo});
+  });
+});
+
+router.post("/edit/:name", function(req, res){
+  Piece.updateOne({name:req.params.name},
+    {theme: req.body.theme,
+      'type.0':{
+      primarycolor: req.body.primarycolor,
+      addedeffects: req.body.addedeffects,
+      text: req.body.text}}).then(function(inked){
+    res.redirect("/");
+});
+});
+//***********************************************
+router.post("/name/delete", function(req, res){
+  Piece.deleteOne({name:req.params.name}).then(function(allTattoos){
+    res.redirect("/");
+  })
+});
+
+
 
 module.exports = router;

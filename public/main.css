@@ -1,0 +1,4 @@
+.container{
+  dislay:flex;
+  flex-flow:row wrap;
+}
